@@ -1,0 +1,9 @@
+Photosynthesis is the process by which green plants, algae and some bacteria convert light energy into chemical energy stored in glucose. It takes place mainly in the chloroplasts, which contain the pigment chlorophyll. Chlorophyll absorbs red and blue light and reflects green light, which is why leaves look green.
+
+The process has two stages. In the light-dependent reactions, which occur in the thylakoid membranes, light energy splits water molecules into oxygen, protons and electrons. The oxygen is released into the atmosphere, and the energy is stored in the carriers ATP and NADPH.
+
+In the Calvin cycle, which occurs in the stroma of the chloroplast, carbon dioxide is fixed into organic molecules. The enzyme RuBisCO catalyses the first major step of carbon fixation. ATP and NADPH from the light reactions provide the energy and reducing power needed to build glucose.
+
+Several factors affect the rate of photosynthesis. Increasing light intensity raises the rate until another factor becomes limiting. Higher carbon dioxide concentration also raises the rate, while temperature affects enzyme activity and the rate drops sharply when enzymes denature. Water availability matters because stomata close during drought, reducing carbon dioxide intake.
+
+Photosynthesis is essential for life on Earth. It produces the oxygen that most organisms need for respiration and forms the base of almost every food chain. Over millions of years, photosynthesis also created the fossil fuels we burn today.

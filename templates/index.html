@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Study Buddy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header class="top">
+    <h1>Study Buddy</h1>
+    <span id="mode-badge" class="badge" title="Demo mode works offline. Add an API key for AI-written content.">checking…</span>
+  </header>
+
+  <main class="layout">
+    <!-- LEFT: input -->
+    <section class="panel" aria-labelledby="in-h">
+      <h2 id="in-h">Your notes</h2>
+
+      <label class="drop" id="drop">
+        <input type="file" id="file" accept=".pdf,.txt,.md">
+        <span id="file-label">Choose a PDF or text file, or drop it here</span>
+      </label>
+
+      <label for="text">Or paste your notes</label>
+      <textarea id="text" rows="9" placeholder="Paste a chapter, lecture notes, or an article…"></textarea>
+
+      <div class="opts">
+        <label>Flashcards
+          <select id="cards"><option>5</option><option selected>8</option><option>12</option><option>16</option></select>
+        </label>
+        <label>Questions
+          <select id="questions"><option>5</option><option selected>6</option><option>10</option><option>15</option></select>
+        </label>
+        <label>Language
+          <select id="language">
+            <option>English</option><option>Hindi</option><option>Kannada</option><option>Tamil</option>
+            <option>Telugu</option><option>Marathi</option><option>Bengali</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="actions">
+        <button id="generate" class="primary" type="button">Make study pack</button>
+        <button id="sample" class="ghost" type="button">Try sample notes</button>
+      </div>
+      <p id="status" class="status" role="status" aria-live="polite"></p>
+
+      <div id="weak-box" class="weak" hidden>
+        <h3>Topics to revise</h3>
+        <ul id="weak-list"></ul>
+        <div class="actions">
+          <button id="weak-plan" class="ghost" type="button">Plan my revision</button>
+          <button id="weak-clear" class="link" type="button">Clear</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- RIGHT: output -->
+    <section class="panel output" aria-labelledby="out-h">
+      <h2 id="out-h" class="sr-only">Study pack</h2>
+
+      <div class="tabs" role="tablist" aria-label="Study pack sections">
+        <button role="tab" id="tab-summary" aria-controls="pane-summary" aria-selected="true">Summary</button>
+        <button role="tab" id="tab-cards" aria-controls="pane-cards" aria-selected="false">Flashcards</button>
+        <button role="tab" id="tab-quiz" aria-controls="pane-quiz" aria-selected="false">Quiz</button>
+        <button role="tab" id="tab-ask" aria-controls="pane-ask" aria-selected="false">Ask</button>
+        <button role="tab" id="tab-plan" aria-controls="pane-plan" aria-selected="false">Plan</button>
+      </div>
+
+      <div id="pane-summary" role="tabpanel" aria-labelledby="tab-summary" class="pane">
+        <div class="empty">Add your notes on the left and choose <strong>Make study pack</strong>. Your summary, flashcards and quiz appear here.</div>
+      </div>
+
+      <div id="pane-cards" role="tabpanel" aria-labelledby="tab-cards" class="pane" hidden>
+        <div class="empty">Flashcards will appear here once you make a study pack.</div>
+      </div>
+
+      <div id="pane-quiz" role="tabpanel" aria-labelledby="tab-quiz" class="pane" hidden>
+        <div class="empty">Your quiz will appear here once you make a study pack.</div>
+      </div>
+
+      <div id="pane-ask" role="tabpanel" aria-labelledby="tab-ask" class="pane" hidden>
+        <div id="chat-log" class="chat-log" aria-live="polite">
+          <div class="empty">Ask anything about your notes, like “What causes inflation?” Answers use only what you uploaded.</div>
+        </div>
+        <div class="chat-input">
+          <input id="question" type="text" placeholder="Ask a question about your notes" autocomplete="off">
+          <button id="ask-btn" class="primary" type="button">Ask</button>
+        </div>
+      </div>
+
+      <div id="pane-plan" role="tabpanel" aria-labelledby="tab-plan" class="pane" hidden>
+        <div class="plan-controls">
+          <label>Days until your exam
+            <input id="days" type="number" min="1" max="30" value="5">
+          </label>
+          <button id="plan-btn" class="primary" type="button">Build plan</button>
+        </div>
+        <p class="hint">Topics you miss in quizzes or mark “still learning” are scheduled first.</p>
+        <div id="plan-out"></div>
+      </div>
+    </section>
+  </main>
+
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
